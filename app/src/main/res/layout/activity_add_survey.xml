@@ -20,8 +20,7 @@
             app:layout_constraintEnd_toEndOf="@+id/img_frente_veiculo"
             app:layout_constraintStart_toStartOf="@+id/img_frente_veiculo"
             app:layout_constraintTop_toBottomOf="@+id/img_frente_veiculo"
-            app:srcCompat="@drawable/ic_launcher_background"
-            tools:srcCompat="@tools:sample/avatars" />
+             />
 
         <ImageView
             android:id="@+id/img_hodometro_veiculo"
@@ -32,14 +31,13 @@
             app:layout_constraintEnd_toEndOf="@+id/img_traseira_veiculo"
             app:layout_constraintStart_toStartOf="@+id/img_traseira_veiculo"
             app:layout_constraintTop_toBottomOf="@+id/img_traseira_veiculo"
-            app:srcCompat="@drawable/ic_launcher_background"
-            tools:srcCompat="@tools:sample/avatars" />
+            />
 
         <LinearLayout
             android:id="@+id/linearLayout1"
             android:layout_width="0dp"
             android:layout_height="30dp"
-            android:background="#4CAF50"
+            android:background="@color/bar_title"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -270,7 +268,7 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginTop="16dp"
-            android:background="#4CAF50"
+            android:background="@color/bar_title"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -297,8 +295,7 @@
             android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-            app:srcCompat="@drawable/side_nav_bar"
-            tools:srcCompat="@tools:sample/avatars" />
+             />
 
         <ImageView
             android:id="@+id/img_motor_veiculo"
@@ -310,8 +307,7 @@
             app:layout_constraintEnd_toEndOf="@+id/img_chassi_veiculo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_chassi_veiculo"
-            app:srcCompat="@drawable/ic_launcher_background"
-            tools:srcCompat="@tools:sample/avatars" />
+             />
 
         <ImageView
             android:id="@+id/img_frente_veiculo"
@@ -322,8 +318,7 @@
             app:layout_constraintEnd_toEndOf="@+id/img_motor_veiculo"
             app:layout_constraintStart_toStartOf="@+id/img_motor_veiculo"
             app:layout_constraintTop_toBottomOf="@+id/img_motor_veiculo"
-            app:srcCompat="@drawable/ic_launcher_background"
-            tools:srcCompat="@tools:sample/avatars" />
+             />
 
         <TextView
             android:id="@+id/textView"
@@ -459,7 +454,7 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginTop="16dp"
-            android:background="#4CAF50"
+            android:background="@color/bar_title"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -477,65 +472,64 @@
 
         </LinearLayout>
 
-        <RadioButton
-            android:id="@+id/radioButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:checked="false"
-            android:text="Parqueamento"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
-
-        <RadioButton
-            android:id="@+id/radioButton2"
-            android:layout_width="125dp"
-            android:layout_height="32dp"
-            android:layout_marginTop="8dp"
-            android:text="Detran-Sede"
-            app:layout_constraintEnd_toEndOf="@+id/radioButton"
-            app:layout_constraintStart_toStartOf="@+id/radioButton"
-            app:layout_constraintTop_toBottomOf="@+id/radioButton" />
-
-        <RadioButton
-            android:id="@+id/radioButton3"
-            android:layout_width="125dp"
-            android:layout_height="33dp"
-            android:layout_marginTop="8dp"
-            android:text="Outro"
-            app:layout_constraintEnd_toEndOf="@+id/radioButton2"
-            app:layout_constraintStart_toStartOf="@+id/radioButton2"
-            app:layout_constraintTop_toBottomOf="@+id/radioButton2" />
-
         <EditText
-            android:id="@+id/editText21"
-            android:layout_width="0dp"
+            android:id="@+id/edt_outro_local"
+            android:layout_width="214dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
             android:ems="10"
             android:hint="Digite outro local"
             android:inputType="textPersonName"
-            app:layout_constraintBottom_toBottomOf="@+id/radioButton3"
+            app:layout_constraintBottom_toBottomOf="@+id/radioGroup"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/radioButton3"
-            app:layout_constraintTop_toTopOf="@+id/radioButton3"
+            app:layout_constraintStart_toEndOf="@+id/radioGroup"
             tools:visibility="invisible" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btn_salvar_vistoria"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="8dp"
-            android:background="#4CAF50"
+            android:background="@color/colorAccent"
             android:text=" Salvar "
             android:textColor="#ffffff"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText21" />
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+            <RadioButton
+                android:id="@+id/radioButton4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Parqueamento" />
+
+            <RadioButton
+                android:id="@+id/radioButton5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Detran - Sede" />
+
+            <RadioButton
+                android:id="@+id/radioButton6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Outro" />
+        </RadioGroup>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
