@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddSurveyActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="20dp">
+
+        <ImageView
+            android:id="@+id/img_traseira_veiculo"
+            android:layout_width="111dp"
+            android:layout_height="84dp"
+            android:layout_marginTop="8dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="@+id/img_frente_veiculo"
+            app:layout_constraintStart_toStartOf="@+id/img_frente_veiculo"
+            app:layout_constraintTop_toBottomOf="@+id/img_frente_veiculo"
+            app:srcCompat="@drawable/ic_launcher_background"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <ImageView
+            android:id="@+id/img_hodometro_veiculo"
+            android:layout_width="111dp"
+            android:layout_height="84dp"
+            android:layout_marginTop="15dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="@+id/img_traseira_veiculo"
+            app:layout_constraintStart_toStartOf="@+id/img_traseira_veiculo"
+            app:layout_constraintTop_toBottomOf="@+id/img_traseira_veiculo"
+            app:srcCompat="@drawable/ic_launcher_background"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:background="#4CAF50"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+            <TextView
+                android:id="@+id/tv_info_veic"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:paddingStart="8dp"
+                android:text="Informações do Veículo"
+                android:textColor="#ffffff"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_placa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="Placa"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout1" />
+
+        <TextView
+            android:id="@+id/tv_uf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="UF"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_placa"
+            app:layout_constraintTop_toTopOf="@+id/tv_placa" />
+
+        <EditText
+            android:id="@+id/edt_placa"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:singleLine="true"
+            android:text="JXS0855"
+            app:layout_constraintEnd_toStartOf="@+id/edt_uf"
+            app:layout_constraintHorizontal_bias="0.02"
+            app:layout_constraintStart_toStartOf="@+id/tv_placa"
+            app:layout_constraintTop_toBottomOf="@+id/tv_placa" />
+
+        <EditText
+            android:id="@+id/edt_marca"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:singleLine="true"
+            android:text="VW/FOX 1.0"
+            app:layout_constraintEnd_toEndOf="@+id/edt_placa"
+            app:layout_constraintStart_toStartOf="@+id/tv_marca"
+            app:layout_constraintTop_toBottomOf="@+id/tv_marca" />
+
+        <EditText
+            android:id="@+id/edt_cor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="VERMELHA"
+            app:layout_constraintEnd_toEndOf="@+id/edt_marca"
+            app:layout_constraintHorizontal_bias="0.45"
+            app:layout_constraintStart_toStartOf="@+id/tv_cor"
+            app:layout_constraintTop_toBottomOf="@+id/tv_cor" />
+
+        <EditText
+            android:id="@+id/edt_ano"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="2007/2008"
+            app:layout_constraintEnd_toEndOf="@+id/edt_cor"
+            app:layout_constraintHorizontal_bias="0.45"
+            app:layout_constraintStart_toStartOf="@+id/tv_ano"
+            app:layout_constraintTop_toBottomOf="@+id/tv_ano" />
+
+        <EditText
+            android:id="@+id/edt_chassi"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="9BWJB45UXKP009659"
+            app:layout_constraintEnd_toEndOf="@+id/edt_motor"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/tv_chassi"
+            app:layout_constraintTop_toBottomOf="@+id/tv_chassi" />
+
+        <EditText
+            android:id="@+id/edt_uf"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:singleLine="true"
+            android:text="AM"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tv_uf"
+            app:layout_constraintTop_toBottomOf="@+id/tv_uf" />
+
+        <EditText
+            android:id="@+id/edt_tipo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="AUTOMÓVEL"
+            app:layout_constraintEnd_toEndOf="@+id/edt_uf"
+            app:layout_constraintHorizontal_bias="0.45"
+            app:layout_constraintStart_toStartOf="@+id/tv_tipo"
+            app:layout_constraintTop_toBottomOf="@+id/tv_tipo" />
+
+        <EditText
+            android:id="@+id/edt_especie"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="PASSAGEIRO"
+            app:layout_constraintEnd_toEndOf="@+id/edt_tipo"
+            app:layout_constraintHorizontal_bias="0.45"
+            app:layout_constraintStart_toStartOf="@+id/tv_especie"
+            app:layout_constraintTop_toBottomOf="@+id/tv_especie" />
+
+        <EditText
+            android:id="@+id/edt_motor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="CCRAF0869"
+            app:layout_constraintEnd_toEndOf="@+id/edt_especie"
+            app:layout_constraintHorizontal_bias="0.45"
+            app:layout_constraintStart_toStartOf="@+id/tv_motor"
+            app:layout_constraintTop_toBottomOf="@+id/tv_motor" />
+
+        <TextView
+            android:id="@+id/tv_marca"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Marca"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/edt_placa"
+            app:layout_constraintTop_toBottomOf="@+id/edt_placa" />
+
+        <TextView
+            android:id="@+id/tv_cor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cor"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/edt_marca"
+            app:layout_constraintTop_toBottomOf="@+id/edt_marca" />
+
+
+        <TextView
+            android:id="@+id/tv_ano"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ano"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/edt_cor"
+            app:layout_constraintTop_toBottomOf="@+id/edt_cor" />
+
+        <TextView
+            android:id="@+id/tv_chassi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nº Chassi"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/edt_ano"
+            app:layout_constraintTop_toBottomOf="@+id/edt_ano" />
+
+        <TextView
+            android:id="@+id/tv_motor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nº Motor"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/edt_especie"
+            app:layout_constraintTop_toBottomOf="@+id/edt_especie" />
+
+        <TextView
+            android:id="@+id/tv_especie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Espécie"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/edt_tipo"
+            app:layout_constraintTop_toBottomOf="@+id/edt_tipo" />
+
+        <TextView
+            android:id="@+id/tv_tipo"
+            android:layout_width="33dp"
+            android:layout_height="wrap_content"
+            android:text="Tipo"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/edt_uf"
+            app:layout_constraintTop_toBottomOf="@+id/edt_uf" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="16dp"
+            android:background="#4CAF50"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_chassi">
+
+            <TextView
+                android:id="@+id/tv_foto_veic"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:paddingStart="8dp"
+                android:text="Fotos do Veículo"
+                android:textColor="#ffffff"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/img_chassi_veiculo"
+            android:layout_width="111dp"
+            android:layout_height="84dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            app:srcCompat="@drawable/side_nav_bar"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <ImageView
+            android:id="@+id/img_motor_veiculo"
+            android:layout_width="111dp"
+            android:layout_height="84dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="@+id/img_chassi_veiculo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_chassi_veiculo"
+            app:srcCompat="@drawable/ic_launcher_background"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <ImageView
+            android:id="@+id/img_frente_veiculo"
+            android:layout_width="111dp"
+            android:layout_height="84dp"
+            android:layout_marginTop="8dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="@+id/img_motor_veiculo"
+            app:layout_constraintStart_toStartOf="@+id/img_motor_veiculo"
+            app:layout_constraintTop_toBottomOf="@+id/img_motor_veiculo"
+            app:srcCompat="@drawable/ic_launcher_background"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Nº Chassi"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/img_chassi_veiculo"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Nº Motor"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/img_motor_veiculo"
+            app:layout_constraintTop_toTopOf="@+id/img_motor_veiculo" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Frente do Veículo"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/img_frente_veiculo"
+            app:layout_constraintTop_toTopOf="@+id/img_frente_veiculo" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Traseira do Veículo"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/img_traseira_veiculo"
+            app:layout_constraintTop_toTopOf="@+id/img_traseira_veiculo" />
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Hodômetro"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/img_hodometro_veiculo"
+            app:layout_constraintTop_toTopOf="@+id/img_hodometro_veiculo" />
+
+        <EditText
+            android:id="@+id/edt_obs_chassi"
+            android:layout_width="0dp"
+            android:layout_height="66dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            android:lines="2"
+            android:text="Chassi raspado"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/img_chassi_veiculo"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <EditText
+            android:id="@+id/edt_obs_traseira"
+            android:layout_width="0dp"
+            android:layout_height="66dp"
+            android:layout_marginEnd="8dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            android:lines="2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView14"
+            app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+        <EditText
+            android:id="@+id/edt_obs_hodometro"
+            android:layout_width="0dp"
+            android:layout_height="66dp"
+            android:layout_marginEnd="8dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            android:lines="2"
+            app:layout_constraintEnd_toEndOf="@+id/edt_obs_traseira"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/img_hodometro_veiculo"
+            app:layout_constraintStart_toStartOf="@+id/textView16"
+            app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+        <EditText
+            android:id="@+id/edt_obs_frente"
+            android:layout_width="0dp"
+            android:layout_height="66dp"
+            android:layout_marginEnd="8dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            android:lines="2"
+            app:layout_constraintEnd_toEndOf="@+id/edt_obs_motor"
+            app:layout_constraintStart_toStartOf="@+id/textView4"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+        <EditText
+            android:id="@+id/edt_obs_motor"
+            android:layout_width="0dp"
+            android:layout_height="66dp"
+            android:layout_marginEnd="8dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            android:lines="2"
+            android:text="Não foi possível identificar a numeração."
+            app:layout_constraintEnd_toEndOf="@+id/edt_obs_chassi"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textView12"
+            app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="16dp"
+            android:background="#4CAF50"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_obs_hodometro">
+
+            <TextView
+                android:id="@+id/tv_local_veic"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:paddingStart="8dp"
+                android:text="Local Vistoria do Veículo"
+                android:textColor="#ffffff"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:checked="false"
+            android:text="Parqueamento"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="125dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="8dp"
+            android:text="Detran-Sede"
+            app:layout_constraintEnd_toEndOf="@+id/radioButton"
+            app:layout_constraintStart_toStartOf="@+id/radioButton"
+            app:layout_constraintTop_toBottomOf="@+id/radioButton" />
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="125dp"
+            android:layout_height="33dp"
+            android:layout_marginTop="8dp"
+            android:text="Outro"
+            app:layout_constraintEnd_toEndOf="@+id/radioButton2"
+            app:layout_constraintStart_toStartOf="@+id/radioButton2"
+            app:layout_constraintTop_toBottomOf="@+id/radioButton2" />
+
+        <EditText
+            android:id="@+id/editText21"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:ems="10"
+            android:hint="Digite outro local"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toBottomOf="@+id/radioButton3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/radioButton3"
+            app:layout_constraintTop_toTopOf="@+id/radioButton3"
+            tools:visibility="invisible" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
+            android:background="#4CAF50"
+            android:text=" Salvar "
+            android:textColor="#ffffff"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText21" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
