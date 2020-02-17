@@ -13,19 +13,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".AddSurveyActivity"
+            android:name=".view.AddSurveyActivity"
             android:label="Nova Vistoria"
-            android:parentActivityName=".SearchDataActivity"></activity>
+            android:parentActivityName=".view.SearchDataActivity"></activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:label="Minhas Vistorias"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".SearchDataActivity"
+            android:name=".view.SearchDataActivity"
             android:label="Consulta"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".view.MainActivity" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".view.LoginActivity"
             android:label="Minhas Vistorias"
             android:theme="@style/AppTheme.NoActionBar">
 

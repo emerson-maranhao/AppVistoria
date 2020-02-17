@@ -1,10 +1,12 @@
-package com.example.appvistoria
+package com.example.appvistoria.view
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.example.appvistoria.R
+import com.example.appvistoria.view.AddSurveyActivity
 import kotlinx.android.synthetic.main.activity_search_data.*
 
 
@@ -23,8 +25,8 @@ class SearchDataActivity : AppCompatActivity() {
 //        })
 
 
-            btn_search.setOnClickListener {
-                if (progressBar != null) {
+        btn_search.setOnClickListener {
+            if (progressBar != null) {
                 val visibility =
                     if (progressBar.visibility == View.VISIBLE) View.GONE else View.VISIBLE
                 progressBar.visibility = visibility

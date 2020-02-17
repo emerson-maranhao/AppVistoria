@@ -1,4 +1,4 @@
-package com.example.appvistoria
+package com.example.appvistoria.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -13,6 +13,7 @@ import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
+import com.example.appvistoria.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
 

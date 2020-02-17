@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    tools:context=".LoginActivity">
+    tools:context=".view.LoginActivity">
 
     <EditText
         android:id="@+id/edt_Cpf"
@@ -53,10 +53,6 @@
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
-=======
-        android:layout_marginStart="6dp"
->>>>>>> origin/master
         android:text="CPF"
         android:textColor="@color/white"
         android:textStyle="bold"
