@@ -17,18 +17,24 @@
             android:label="Nova Vistoria"
             android:parentActivityName=".SearchDataActivity"></activity>
         <activity
-            android:name=".SearchDataActivity"
-            android:label="Consulta"
-            android:parentActivityName=".MainActivity"/>
-        <activity
             android:name=".MainActivity"
             android:label="Minhas Vistorias"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".SearchDataActivity"
+            android:label="Consulta"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".LoginActivity"
+            android:label="Minhas Vistorias"
             android:theme="@style/AppTheme.NoActionBar">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
     </application>
 
