@@ -53,6 +53,10 @@
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
+=======
+        android:layout_marginStart="6dp"
+>>>>>>> origin/master
         android:text="CPF"
         android:textColor="@color/white"
         android:textStyle="bold"
