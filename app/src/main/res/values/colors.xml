@@ -4,6 +4,7 @@
     <!--    <color name="colorPrimaryDark">#00574B</color>-->
     <!--    <color name="colorAccent">#D81B60</color>-->
 
+        <!--Theme Aplication-->
     <color name="colorPrimary">#141745</color>
     <color name="colorPrimaryDark">#141745 </color>
     <color name="colorAccent">#ec802e</color>
