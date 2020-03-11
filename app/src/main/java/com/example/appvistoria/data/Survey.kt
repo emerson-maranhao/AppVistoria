@@ -1,7 +1,11 @@
 package com.example.appvistoria.data
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class Survey(
-    var licence_plate: String = "",
+    var license_plate: String = "",
     var year: String = "",
     var brand: String = "",
     var type: String = "",
@@ -23,5 +27,9 @@ data class Survey(
     var survey_place: String = "",
     var status: String = "",
     var data_insert: String
+//    var license_plate: String,
+//    var brand: String,
+//    var status: String ,
+//    var data_insert: String
 
-)
+) : Parcelable

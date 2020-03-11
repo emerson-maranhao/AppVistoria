@@ -3,9 +3,11 @@
     xmlns:dist="http://schemas.android.com/apk/distribution"
     package="com.example.appvistoria">
 
-    <uses-feature android:name="android.hardware.camera"
+    <uses-feature
+        android:name="android.hardware.camera"
         android:required="true" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -18,15 +20,20 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:label="Detalhes"
+            android:name=".presentation.details.SurveyDetailsActivity"
+            android:parentActivityName=".view.MainActivity"></activity>
         <activity
             android:name=".view.AddSurveyActivity"
             android:label="Nova Vistoria"
-            android:parentActivityName=".view.SearchDataActivity"></activity>
+            android:parentActivityName=".view.SearchDataActivity" />
         <activity
             android:name=".view.MainActivity"
             android:label="Minhas Vistorias"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".view.SearchDataActivity"
             android:label="Consulta"
@@ -35,13 +42,11 @@
             android:name=".ui.auth.LoginActivity"
             android:label="Minhas Vistorias"
             android:theme="@style/AppTheme.NoActionBar">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
     </application>
 

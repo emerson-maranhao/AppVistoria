@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddSurveyActivity">
+    tools:context=".view.AddSurveyActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -331,7 +331,7 @@
             />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/tv_chassis"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -397,10 +397,11 @@
             android:inputType="textMultiLine"
             android:lines="2"
             android:text="Chassi raspado"
+            android:background="#ececec"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/img_chassi_veiculo"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_chassis" />
 
         <EditText
             android:id="@+id/edt_obs_traseira"
@@ -411,6 +412,7 @@
             android:gravity="start|top"
             android:inputType="textMultiLine"
             android:lines="2"
+            android:background="#ececec"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/textView14"
             app:layout_constraintTop_toBottomOf="@+id/textView14" />
@@ -424,6 +426,7 @@
             android:gravity="start|top"
             android:inputType="textMultiLine"
             android:lines="2"
+            android:background="#ececec"
             app:layout_constraintEnd_toEndOf="@+id/edt_obs_traseira"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/img_hodometro_veiculo"
@@ -439,6 +442,7 @@
             android:gravity="start|top"
             android:inputType="textMultiLine"
             android:lines="2"
+            android:background="#ececec"
             app:layout_constraintEnd_toEndOf="@+id/edt_obs_motor"
             app:layout_constraintStart_toStartOf="@+id/textView4"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -452,6 +456,7 @@
             android:gravity="start|top"
             android:inputType="textMultiLine"
             android:lines="2"
+            android:background="#ececec"
             android:text="Não foi possível identificar a numeração."
             app:layout_constraintEnd_toEndOf="@+id/edt_obs_chassi"
             app:layout_constraintHorizontal_bias="0.0"
