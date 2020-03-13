@@ -7,11 +7,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appvistoria.R
 import com.example.appvistoria.data.Survey
+import kotlinx.android.synthetic.main.content_main.view.*
+import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.item_list_survey.view.*
-import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
-import java.util.*
 
 class SurveysAdapter(
 
@@ -29,6 +27,7 @@ class SurveysAdapter(
 
     override fun onBindViewHolder(holder: SurveyViewHolder, position: Int) {
         holder.bindView(surveys[position])
+
     }
 
     class SurveyViewHolder(
@@ -39,10 +38,12 @@ class SurveysAdapter(
 //        private val brand = itemView.tv_brand
 //        private val data = itemView.tv_data_insert
 
+
         private var license = itemView.tv_license_plate
         private var brand = itemView.tv_brand
         private var status = itemView.btn_status
         private var data = itemView.tv_data_insert
+
 
         fun bindView(survey: Survey) {
 
@@ -55,7 +56,6 @@ class SurveysAdapter(
 //            val formato = "dd/MM/yyyy"
 //            val format = SimpleDateFormat(formato)
 //            val dataFormatada = format.format(survey.data_insert)
-
 
             license.text = survey.license_plate
             brand.text = survey.brand

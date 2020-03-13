@@ -1,6 +1,8 @@
 package com.example.appvistoria.ui.home
 
 import android.os.Bundle
+import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,75 +18,6 @@ import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
 
-
-//    private lateinit var homeViewModel: HomeViewModel
-//
-//    override fun onCreateView(
-//        inflater: LayoutInflater,
-//        container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View? {
-//
-//        return inflater.inflate(R.layout.fragment_home, container, false)
-//        recyclerView.setHasFixedSize(true)
-//
-//        root.recyclerView?.adapter = SurveysAdapter(surveys)
-//        with(recyclerView) {
-//            layoutManager = LinearLayoutManager(this@HomeFragment), RecyclerView.VERTICAL, false)
-//            setHasFixedSize(true)
-//            adapter = SurveysAdapter(getSurveys())
-//        }
-////        val emptyView: ImageView = root.findViewById(R.id.no_item_list)
-////        val list: ListView = root.findViewById(R.id.recyclerView)
-////        list.setEmptyView(emptyView)
-////
-////
-////        private lateinit var homeViewModel: HomeViewModel
-//
-//    override fun onCreateView(
-//        inflater: LayoutInflater,
-//        container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View? {
-//
-//
-//
-//        homeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
-//
-//        val root = inflater.inflate(R.layout.fragment_home, container, false)
-//
-//
-//        root.recyclerView?.layoutManager =
-//            LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-//
-////        recyclerView.setHasFixedSize(true)
-//
-//        //root.recyclerView?.adapter = SurveysAdapter(surveys)
-////        with(recyclerView) {
-////            layoutManager = LinearLayoutManager(this@HomeFragment), RecyclerView.VERTICAL, false)
-////            setHasFixedSize(true)
-////            adapter = SurveysAdapter(getSurveys())
-////        }
-////        val emptyView: ImageView = root.findViewById(R.id.no_item_list)
-////        val list: ListView = root.findViewById(R.id.recyclerView)
-////        list.setEmptyView(emptyView)
-//
-//
-//        homeViewModel.surveyLiveData.observe(this, Observer {
-//            //textView.text = it
-//            it?.let { surveys ->
-//                Log.i("survey", surveys.toString())
-//                root.recyclerView?.adapter = SurveysAdapter(surveys)
-//
-//            }
-//        })
-//        homeViewModel.getSurveys()
-//        return root
-//
-//
-//    }
-
-
     private lateinit var homeViewModel: HomeViewModel
 
     override fun onCreateView(
@@ -92,6 +25,20 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+//        if (progressBar != null) {
+//            Log.i("progress","passou")
+//            val visibility =
+//                if (progressBar.visibility == View.VISIBLE) View.GONE else View.VISIBLE
+//            progressBar.visibility = visibility
+//            val handler = Handler()
+//
+//            handler.postDelayed({
+//                progressBar.visibility = View.GONE
+//
+//
+//            }, 2000)
+//        }
+
 
         return inflater.inflate(R.layout.fragment_home, container, false)
 
@@ -100,33 +47,54 @@ class HomeFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        homeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
+        if (progressBar != null) {
+            Log.i("progress", "passou")
+            val visibility =
+                if (progressBar.visibility == View.VISIBLE) View.GONE else View.VISIBLE
+            progressBar.visibility = visibility
+
+            val handler = Handler()
+
+            handler.postDelayed({
+                progressBar.visibility = View.GONE
+                homeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
 
 
 
-        homeViewModel.surveyLiveData.observe(this, Observer {
-            //textView.text = it
-            it?.let { surveys ->
-                with(recyclerView) {
+                homeViewModel.surveyLiveData.observe(this, Observer {
+                    //textView.text = it
 
-                    recyclerView?.layoutManager =
-                        LinearLayoutManager(this@HomeFragment.context, RecyclerView.VERTICAL, false)
+                    it?.let { surveys ->
+                        with(recyclerView) {
+                            //progressBar?.visibility = View.GONE
 
-                    setHasFixedSize(true)
-                    adapter = SurveysAdapter(surveys) { survey ->
-                        val intent =SurveyDetailsActivity.getStartIntent(context, survey)
-                        this@HomeFragment.startActivity(intent)
-                    }
-                }
-                //recyclerView?.adapter = SurveysAdapter(surveys)
+                            recyclerView?.layoutManager =
+                                LinearLayoutManager(this@HomeFragment.context, RecyclerView.VERTICAL, false)
+
+                            setHasFixedSize(true)
+                            adapter = SurveysAdapter(surveys) { survey ->
+                                val intent = SurveyDetailsActivity.getStartIntent(context, survey)
+
+                                this@HomeFragment.startActivity(intent)
+
+
+                            }
+                        }
+                        //recyclerView?.adapter = SurveysAdapter(surveys)
 //                recyclerView.addOnScrollListener(
 //                    InfiniteScrollListener({ requestNews() }, linearLayout)
 //                )
 
-            }
-        })
+                    }
 
-        homeViewModel.getSurveys()
+                })
+
+                homeViewModel.getSurveys()
+
+            }, 2000)
+        }
+
+
     }
 
 }

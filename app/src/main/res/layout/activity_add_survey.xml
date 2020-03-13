@@ -25,7 +25,7 @@
             />
 
         <ImageView
-            android:id="@+id/img_hodometro_veiculo"
+            android:id="@+id/img_odometro_veiculo"
             android:layout_width="111dp"
             android:layout_height="84dp"
             android:layout_marginTop="15dp"
@@ -343,7 +343,7 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
         <TextView
-            android:id="@+id/textView12"
+            android:id="@+id/tv_engine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -354,7 +354,7 @@
             app:layout_constraintTop_toTopOf="@+id/img_motor_veiculo" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/tv_front"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -365,7 +365,7 @@
             app:layout_constraintTop_toTopOf="@+id/img_frente_veiculo" />
 
         <TextView
-            android:id="@+id/textView14"
+            android:id="@+id/tv_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -376,15 +376,15 @@
             app:layout_constraintTop_toTopOf="@+id/img_traseira_veiculo" />
 
         <TextView
-            android:id="@+id/textView16"
+            android:id="@+id/tv_odometer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Hodômetro"
+            android:text="Odômetro"
             android:textColor="#000000"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/img_hodometro_veiculo"
-            app:layout_constraintTop_toTopOf="@+id/img_hodometro_veiculo" />
+            app:layout_constraintStart_toEndOf="@+id/img_odometro_veiculo"
+            app:layout_constraintTop_toTopOf="@+id/img_odometro_veiculo" />
 
         <EditText
             android:id="@+id/edt_obs_chassi"
@@ -414,11 +414,11 @@
             android:lines="2"
             android:background="#ececec"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/textView14"
-            app:layout_constraintTop_toBottomOf="@+id/textView14" />
+            app:layout_constraintStart_toStartOf="@+id/tv_back"
+            app:layout_constraintTop_toBottomOf="@+id/tv_back" />
 
         <EditText
-            android:id="@+id/edt_obs_hodometro"
+            android:id="@+id/edt_obs_odometro"
             android:layout_width="0dp"
             android:layout_height="66dp"
             android:layout_marginEnd="8dp"
@@ -429,9 +429,9 @@
             android:background="#ececec"
             app:layout_constraintEnd_toEndOf="@+id/edt_obs_traseira"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/img_hodometro_veiculo"
-            app:layout_constraintStart_toStartOf="@+id/textView16"
-            app:layout_constraintTop_toBottomOf="@+id/textView16" />
+            app:layout_constraintStart_toEndOf="@+id/img_odometro_veiculo"
+            app:layout_constraintStart_toStartOf="@+id/tv_odometer"
+            app:layout_constraintTop_toBottomOf="@+id/tv_odometer" />
 
         <EditText
             android:id="@+id/edt_obs_frente"
@@ -444,8 +444,8 @@
             android:lines="2"
             android:background="#ececec"
             app:layout_constraintEnd_toEndOf="@+id/edt_obs_motor"
-            app:layout_constraintStart_toStartOf="@+id/textView4"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            app:layout_constraintStart_toStartOf="@+id/tv_front"
+            app:layout_constraintTop_toBottomOf="@+id/tv_front" />
 
         <EditText
             android:id="@+id/edt_obs_motor"
@@ -460,8 +460,8 @@
             android:text="Não foi possível identificar a numeração."
             app:layout_constraintEnd_toEndOf="@+id/edt_obs_chassi"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textView12"
-            app:layout_constraintTop_toBottomOf="@+id/textView12" />
+            app:layout_constraintStart_toStartOf="@+id/tv_engine"
+            app:layout_constraintTop_toBottomOf="@+id/tv_engine" />
 
 
         <LinearLayout
@@ -473,7 +473,7 @@
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edt_obs_hodometro">
+            app:layout_constraintTop_toBottomOf="@+id/edt_obs_odometro">
 
             <TextView
                 android:id="@+id/tv_local_veic"
