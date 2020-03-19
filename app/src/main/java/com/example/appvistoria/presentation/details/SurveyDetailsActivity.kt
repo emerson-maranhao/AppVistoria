@@ -39,8 +39,8 @@ class SurveyDetailsActivity : AppCompatActivity() {
 //        val front_obs: String? = survey.front_obs
         val back_photo: String? = survey.back_photo
         val back_obs: String? = survey.back_obs
-        val hodometer_photo: String? = survey.hodometer_photo
-        val hodometer_obs: String? = survey.hodometer_obs
+        val odometer_photo: String? = survey.odometer_photo
+        val odometer_obs: String? = survey.odometer_obs
         val survey_place: String = survey.survey_place
         val status: String = survey.status
         val data_insert: String = survey.data_insert
@@ -126,10 +126,10 @@ class SurveyDetailsActivity : AppCompatActivity() {
             //.error(R.drawable.user_placeholder_error)
             .into(img_traseira_veiculo)
 
-        edt_obs_odometro.setText(hodometer_obs)
+        edt_obs_odometro.setText(odometer_obs)
         Picasso.get()
             //.load("http://10.11.3.205:3333/" + hodometer_photo)
-            .load(hodometer_photo)
+            .load(odometer_photo)
             .resize(300, 250)
             .centerCrop()
             .placeholder(R.drawable.ic_add_a_photo_24px)

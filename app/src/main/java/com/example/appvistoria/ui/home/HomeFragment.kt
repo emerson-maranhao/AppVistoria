@@ -1,5 +1,8 @@
 package com.example.appvistoria.ui.home
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -40,7 +43,6 @@ class HomeFragment : Fragment() {
 //        }
 
 
-
         return inflater.inflate(R.layout.fragment_home, container, false)
 
     }
@@ -54,45 +56,79 @@ class HomeFragment : Fragment() {
                 if (progressBar.visibility == View.VISIBLE) View.GONE else View.VISIBLE
             progressBar.visibility = visibility
 
+            val cm = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            val activeNetwork: NetworkInfo? = cm.activeNetworkInfo
+            val isConnected: Boolean = activeNetwork?.isConnectedOrConnecting == true
+            homeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
+
+
             val handler = Handler()
 
             handler.postDelayed({
+
+
                 progressBar.visibility = View.GONE
-                homeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
+                if (isConnected) {
+                    Log.i("conexão", "Tem internet")
+                    homeViewModel.surveyLiveData.observe(this, Observer {
+                        //textView.text = it
 
+                        it?.let { surveys ->
+                            with(recyclerView) {
+                                //progressBar?.visibility = View.GONE
 
+                                recyclerView?.layoutManager =
+                                    LinearLayoutManager(
+                                        this@HomeFragment.context,
+                                        RecyclerView.VERTICAL,
+                                        false
+                                    )
 
-                homeViewModel.surveyLiveData.observe(this, Observer {
-                    //textView.text = it
+                                setHasFixedSize(true)
+                                adapter = SurveysAdapter(surveys) { survey ->
+                                    val intent =
+                                        SurveyDetailsActivity.getStartIntent(context, survey)
 
-                    it?.let { surveys ->
-                        with(recyclerView) {
-                            //progressBar?.visibility = View.GONE
+                                    this@HomeFragment.startActivity(intent)
 
-                            recyclerView?.layoutManager =
-                                LinearLayoutManager(this@HomeFragment.context, RecyclerView.VERTICAL, false)
-
-                            setHasFixedSize(true)
-                            adapter = SurveysAdapter(surveys) { survey ->
-                                val intent = SurveyDetailsActivity.getStartIntent(context, survey)
-
-                                this@HomeFragment.startActivity(intent)
-
-
+                                }
                             }
                         }
-                        //recyclerView?.adapter = SurveysAdapter(surveys)
-//                recyclerView.addOnScrollListener(
-//                    InfiniteScrollListener({ requestNews() }, linearLayout)
-//                )
 
-                    }
+                    })
 
-                })
+                    homeViewModel.getSurveys()
 
-                homeViewModel.getSurveys()
+                } else {
+                    Log.i("conexão", "Não tem internet")
+                    homeViewModel.liveData.observe(this, Observer {
+                        //textView.text = it
+                        Log.i("raaaaaaaaa", it.toString())
 
-            }, 2000)
+                        it?.let { surveys ->
+                            with(recyclerView) {
+                                //progressBar?.visibility = View.GONE
+
+                                recyclerView?.layoutManager =
+                                    LinearLayoutManager(
+                                        this@HomeFragment.context,
+                                        RecyclerView.VERTICAL,
+                                        false
+                                    )
+
+                                setHasFixedSize(true)
+                                adapter = SurveysAdapter(surveys) { survey ->
+                                    val intent =
+                                        SurveyDetailsActivity.getStartIntent(context, survey)
+
+                                    this@HomeFragment.startActivity(intent)
+                                }
+                            }
+                        }
+                    })
+                    homeViewModel.getSurveysLocal()
+                }
+            }, 500)
         }
 
 

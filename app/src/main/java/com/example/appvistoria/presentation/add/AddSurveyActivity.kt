@@ -1,6 +1,7 @@
 package com.example.appvistoria.view
 
 import android.Manifest
+import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -9,14 +10,24 @@ import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
+import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.appvistoria.R
+import com.example.appvistoria.data.Survey
+import com.example.appvistoria.presentation.details.SurveyDetailsActivity
+import com.example.appvistoria.ui.home.HomeViewModel
+import com.example.appvistoria.ui.home.SurveysAdapter
+import com.theartofdev.edmodo.cropper.CropImage
 import kotlinx.android.synthetic.main.activity_add_survey.*
+import kotlinx.android.synthetic.main.fragment_home.*
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
@@ -32,12 +43,67 @@ val PERMISSION_CODE = 100
 
 
 class AddSurveyActivity : AppCompatActivity() {
+    private lateinit var homeViewModel2: HomeViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_survey)
 
+
+//        survey.license_plate = edt_licence_plate.toString()
+//        survey.year = edt_ano.toString()
+//        survey.brand = edt_marca.toString()
+//        survey.type = edt_tipo.toString()
+//        survey.color = edt_cor.toString()
+//        survey.kind = edt_especie.toString()
+//        survey.uf = edt_uf.toString()
+//        survey.chassis = edt_chassi.toString()
+//        survey.engine = edt_motor.toString()
+//        survey.chassis_photo = "image_chassi"
+//        survey.chassis_obs = edt_obs_motor.toString()
+//        survey.engine_photo = "image_engine"
+//        survey.engine_obs = edt_obs_motor.toString()
+//
+//        survey.back_photo = "image_back"
+//        survey.back_obs = edt_obs_traseira.toString()
+//        survey.odometer_photo = "image_odometer"
+//        survey.odometer_obs = edt_obs_odometro.toString()
+//        survey.survey_place = "detran"
+//        survey.status = "Aprovada"
+//        survey.data_insert = "2020/03/02"
+
+
         btn_salvar_vistoria.setOnClickListener {
+            val survey =
+                Survey(
+                    edt_placa.text.toString(),
+                    edt_ano.text.toString(),
+                    edt_marca.text.toString(),
+                    edt_tipo.text.toString(),
+                    edt_cor.text.toString(),
+                    edt_especie.text.toString(),
+                    edt_uf.text.toString(),
+                    edt_chassi.text.toString(),
+                    edt_motor.text.toString(),
+                    "image_chassi",
+                    edt_obs_motor.text.toString(),
+                    "image_engine",
+                    edt_obs_motor.text.toString(),
+                    "image_back",
+                    edt_obs_traseira.text.toString(),
+                    "image_odometer",
+                    edt_obs_odometro.text.toString(),
+                    "detran",
+                    "Aprovada",
+                    "2020/03/02"
+                )
+            Log.i("survey::::::::::", survey.toString())
+            homeViewModel2 = ViewModelProviders.of(this).get(HomeViewModel::class.java)
+            homeViewModel2.insertSurvey(survey)
+
+            // homeViewModel.insertSurvey(survey)
+
             val listItems = arrayOf("Aprovada", "Pendente", "Reprovada")
             val mBuilder = AlertDialog.Builder(this@AddSurveyActivity)
             mBuilder.setTitle("Status da Vistoria")
@@ -66,6 +132,7 @@ class AddSurveyActivity : AppCompatActivity() {
 
             val mDialog = mBuilder.create()
             mDialog.show()
+
 
         }
 
@@ -98,7 +165,9 @@ class AddSurveyActivity : AppCompatActivity() {
             )
         }
 
+
     }
+
 
     // Function to check and request permission.
     fun checkPermission(permission: String, requestCode: Int) {
@@ -180,44 +249,85 @@ class AddSurveyActivity : AppCompatActivity() {
         startActivityForResult(galleryIntent, GALLERY)
     }
 
-    private fun takePhotoFromCamera() {
-        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        startActivityForResult(intent, CAMERA)
+     fun takePhotoFromCamera() {
+        CropImage.activity().start(this)
+        //val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        //startActivityForResult(intent, CAMERA)
     }
 
-    public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//    public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//
+//        super.onActivityResult(requestCode, resultCode, data)
+//        /* if (resultCode == this.RESULT_CANCELED)
+//         {
+//         return
+//         }*/
+//        if (requestCode == GALLERY) {
+//            if (data != null) {
+//                val contentURI = data!!.data
+//                try {
+//                    val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, contentURI)
+//                    val path = saveImage(bitmap)
+//                    Toast.makeText(this@AddSurveyActivity, "Image Saved!", Toast.LENGTH_SHORT)
+//                        .show()
+//                    imageview!!.scaleType = ImageView.ScaleType.CENTER_CROP
+//                    imageview!!.setImageBitmap(bitmap)
+//
+//                } catch (e: IOException) {
+//                    e.printStackTrace()
+//                    Toast.makeText(this@AddSurveyActivity, "Failed!", Toast.LENGTH_SHORT).show()
+//                }
+//
+//            }
+//
+//        } else if (requestCode == CAMERA) {
+//            val thumbnail = data!!.extras!!.get("data") as Bitmap
+//            imageview!!.scaleType = ImageView.ScaleType.CENTER_CROP
+//            imageview!!.setImageBitmap(thumbnail)
+//            saveImage(thumbnail)
+//            Toast.makeText(this@AddSurveyActivity, "Image Saved!", Toast.LENGTH_SHORT).show()
+//        }
+//    }
+public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 
-        super.onActivityResult(requestCode, resultCode, data)
-        /* if (resultCode == this.RESULT_CANCELED)
-         {
-         return
-         }*/
-        if (requestCode == GALLERY) {
-            if (data != null) {
-                val contentURI = data!!.data
-                try {
-                    val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, contentURI)
-                    val path = saveImage(bitmap)
-                    Toast.makeText(this@AddSurveyActivity, "Image Saved!", Toast.LENGTH_SHORT)
-                        .show()
-                    imageview!!.scaleType = ImageView.ScaleType.CENTER_CROP
-                    imageview!!.setImageBitmap(bitmap)
+    super.onActivityResult(requestCode, resultCode, data)
+    /* if (resultCode == this.RESULT_CANCELED)
+     {
+     return
+     }*/
+    if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+        var res =CropImage.getActivityResult(data)
+        if (resultCode== Activity.RESULT_OK){
+                       var contentURI = res.uri
 
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                    Toast.makeText(this@AddSurveyActivity, "Failed!", Toast.LENGTH_SHORT).show()
-                }
-
-            }
-
-        } else if (requestCode == CAMERA) {
-            val thumbnail = data!!.extras!!.get("data") as Bitmap
             imageview!!.scaleType = ImageView.ScaleType.CENTER_CROP
-            imageview!!.setImageBitmap(thumbnail)
-            saveImage(thumbnail)
-            Toast.makeText(this@AddSurveyActivity, "Image Saved!", Toast.LENGTH_SHORT).show()
+                imageview!!.setImageURI(contentURI)
         }
+//        if (data != null) {
+//            val contentURI = data!!.data
+//            try {
+//                val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, contentURI)
+//                val path = saveImage(bitmap)
+//                Toast.makeText(this@AddSurveyActivity, "Image Saved!", Toast.LENGTH_SHORT)
+//                    .show()
+//                imageview!!.scaleType = ImageView.ScaleType.CENTER_CROP
+//                imageview!!.setImageBitmap(bitmap)
+//
+//            } catch (e: IOException) {
+//                e.printStackTrace()
+//                Toast.makeText(this@AddSurveyActivity, "Failed!", Toast.LENGTH_SHORT).show()
+//            }
+//
+//        }
+
+    } else if (requestCode == CAMERA) {
+        val thumbnail = data!!.extras!!.get("data") as Bitmap
+        imageview!!.scaleType = ImageView.ScaleType.CENTER_CROP
+        imageview!!.setImageBitmap(thumbnail)
+        saveImage(thumbnail)
+        Toast.makeText(this@AddSurveyActivity, "Image Saved!", Toast.LENGTH_SHORT).show()
     }
+}
 
     fun saveImage(myBitmap: Bitmap): String {
         val bytes = ByteArrayOutputStream()
@@ -260,6 +370,7 @@ class AddSurveyActivity : AppCompatActivity() {
     companion object {
         private val IMAGE_DIRECTORY = "/demonuts"
     }
+
 
 
 }

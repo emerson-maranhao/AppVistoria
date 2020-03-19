@@ -131,7 +131,7 @@ class ImageDialogFragment : DialogFragment(), View.OnClickListener {
                 else -> -1
             }
         }
-        imgs = arrayOf(survey.chassis_photo.toString(),survey.engine_photo.toString(),survey.back_photo.toString(),survey.hodometer_photo.toString())
+        imgs = arrayOf(survey.chassis_photo.toString(),survey.engine_photo.toString(),survey.back_photo.toString(),survey.odometer_photo.toString())
         //imgs[0] = survey.chassis_photo.toString()
 
         Log.i("ffff", survey.chassis_photo.toString())

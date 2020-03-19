@@ -34,7 +34,7 @@ class SearchDataActivity : AppCompatActivity() {
 
                 handler.postDelayed({
                     progressBar.visibility = View.GONE
-                    val intent = Intent(this, AddSurveyActivity::class.java)
+                    val intent = Intent(this, AddSurveyActivity2::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                     startActivity(intent)
 

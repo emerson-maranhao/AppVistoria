@@ -1,55 +1,113 @@
 package com.example.appvistoria.ui.home
 
+import android.app.Application
 import android.util.Log
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import com.example.appvistoria.dao.SurveyDatabase
 import com.example.appvistoria.data.ApiService
 import com.example.appvistoria.data.Survey
-import com.example.appvistoria.data.response.SurveyBodyResponse
+import com.example.appvistoria.repository.SurveyRepository
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(application: Application) : AndroidViewModel(application) {
+
+    private var repository: SurveyRepository = SurveyRepository(application)
+
+
+    fun setSurvey(survey: Survey) {
+        repository.setSurveyLocal(survey)
+        Log.i("setSurvey", repository.toString())
+    }
 
     //this is the data that we will fetch asynchronously
     val surveyLiveData: MutableLiveData<List<Survey>> = MutableLiveData()
+    val surveyLiveData2: MutableLiveData<Survey> = MutableLiveData()
+    val liveData:LiveData<List<Survey>>
+    init {
+        // Gets reference to WordDao from WordRoomDatabase to construct
+        // the correct WordRepository.
+        val surveyDao = SurveyDatabase.getDatabase(application)?.surveyDao()
+        repository = SurveyRepository(application)
+        liveData = repository.getSurveysLocal()!!
+    }
+    fun getSurveysLocal() {
+        //liveData.value = repository.getSurveysLocal()
+    }
 
     //we will call this method to get the data
     fun getSurveys() { //if the list is null
         ApiService.service.getSurveys().enqueue(
             object : Callback<List<Survey>> {
 
-            override fun onResponse(
-                call: Call<List<Survey>?>,
-                response: Response<List<Survey>?>
-            ) {
-                if (response.isSuccessful) {
+                override fun onResponse(
+                    call: Call<List<Survey>?>,
+                    response: Response<List<Survey>?>
+                ) {
+                    if (response.isSuccessful) {
 
-                    val surveys: MutableList<Survey> = mutableListOf()
+                        val surveys: MutableList<Survey> = mutableListOf()
 
 
-                    response.body()?.let {
-                        val s: List<Survey> = it
-                        //surveyLiveData.value = it
-                        surveyLiveData.value = s
-                        Log.i("ok","ok------------------------->"+ surveyLiveData)
+                        response.body()?.let {
+                            val s: List<Survey> = it
+                            Log.i("ok", "ok------------------------->" + surveyLiveData)
 
+                            for (i in s.indices) {
+                                setSurvey(s[i])
+
+                                Log.i("for", "#######################" + s[i])
+                            }
+                            surveyLiveData.value = s
+                        }
                     }
+                }
 
+                override fun onFailure(call: Call<List<Survey>>, t: Throwable) {
+                    Log.i("erro", "erro------------------------->" + t)
+                    // surveyLiveData.value= getSurveysLocal()?.value
+                    // Log.i("livedata:--------------",surveyLiveData.toString())
 
                 }
-            }
 
-            override fun onFailure(call: Call<List<Survey>>, t: Throwable) {
-                Log.i("erro","erro------------------------->"+t)
-            }
+            })
 
-        })
+    }
+
+
+    //fun insertSurvey(survey: Survey , call: Callback<Survey>) {
+    fun insertSurvey(survey: Survey) {
+        Log.i("entrou", "insert survey")
+        ApiService.service.insertSurvey(survey).enqueue(
+
+            object : Callback<Survey?> {
+                override fun onResponse(call: Call<Survey?>, response: Response<Survey?>) {
+                    Log.i("onresponse", "method response")
+                    if (response.isSuccessful) {
+
+                        response?.body()?.let {
+                            val note: Survey = it
+                            surveyLiveData2.value = note
+                            Log.i("it-----------------", it.toString())
+                            Log.i("result-----------------", response.code().toString())
+                        }
+                    } else {
+                        Log.i("else----------------", response.toString())
+
+                    }
+                }
+
+                override fun onFailure(call: Call<Survey?>, t: Throwable) {
+                    Log.i("errr-----------------", t.message)
+
+                    Log.e("onFailure error", t?.message)
+                }
+            })
     }
 }
-
-
 //class HomeViewModel : ViewModel() {
 //
 //
