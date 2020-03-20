@@ -148,7 +148,7 @@ class ImageDialogFragment : DialogFragment(), View.OnClickListener {
 //        imgs[3] = survey.hodometer_photo.toString()
         Picasso
             .get()
-            .load(imgs[imagePosition])
+            .load("http://10.11.1.233:3333/" +imgs[imagePosition])
             .into(iv_image)
 
         verifyButtons()

@@ -12,6 +12,7 @@ import com.example.appvistoria.R
 import com.example.appvistoria.data.Survey
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_survey_details.*
+import kotlinx.android.synthetic.main.fragment_image_dialog.*
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class SurveyDetailsActivity : AppCompatActivity() {
@@ -87,10 +88,9 @@ class SurveyDetailsActivity : AppCompatActivity() {
         //img_chassi_veiculo.setText(chassis_photo)
         edt_obs_chassi.setText(chassis_obs)
 
-
         Picasso.get()
-            //.load("http://10.11.3.205:3333/" + chassis_photo)
-            .load(chassis_photo)
+            .load("http://10.11.1.233:3333/" + chassis_photo)
+            //.load(chassis_photo)
             .resize(300, 250)
             .centerCrop()
             .placeholder(R.drawable.ic_add_a_photo_24px)
@@ -99,8 +99,8 @@ class SurveyDetailsActivity : AppCompatActivity() {
 
         edt_obs_motor.setText(engine_obs)
         Picasso.get()
-            //.load("http://10.11.3.205:3333/" + engine_photo)
-            .load(engine_photo)
+            .load("http://10.11.1.233:3333/" + engine_photo)
+            //.load(engine_photo)
             .resize(300, 250)
             .centerCrop()
             .placeholder(R.drawable.ic_add_a_photo_24px)
@@ -118,8 +118,8 @@ class SurveyDetailsActivity : AppCompatActivity() {
 
         edt_obs_traseira.setText(back_obs)
         Picasso.get()
-            //.load("http://10.11.3.205:3333/" + back_photo)
-            .load(back_photo)
+            .load("http://10.11.1.233:3333/" + back_photo)
+            //.load(back_photo)
             .resize(300, 250)
             .centerCrop()
             .placeholder(R.drawable.ic_add_a_photo_24px)
@@ -128,8 +128,8 @@ class SurveyDetailsActivity : AppCompatActivity() {
 
         edt_obs_odometro.setText(odometer_obs)
         Picasso.get()
-            //.load("http://10.11.3.205:3333/" + hodometer_photo)
-            .load(odometer_photo)
+            .load("http://10.11.1.233:3333/" + odometer_photo)
+            //.load(odometer_photo)
             .resize(300, 250)
             .centerCrop()
             .placeholder(R.drawable.ic_add_a_photo_24px)

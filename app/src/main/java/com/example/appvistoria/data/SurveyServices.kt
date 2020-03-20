@@ -8,8 +8,8 @@ import retrofit2.http.*
 
 
 interface SurveyServices {
-    //@GET("listall")
-    @GET("details")
+    @GET("listall")
+    //@GET("details")
 
     fun getSurveys(
         //@Query("api-key") apiKey: String = "dYvSDzxECNAYUvJ2btXR2CyNnbUwadjdjTOs",

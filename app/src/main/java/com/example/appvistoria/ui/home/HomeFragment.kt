@@ -14,12 +14,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
 import com.example.appvistoria.R
 import com.example.appvistoria.presentation.details.SurveyDetailsActivity
 import kotlinx.android.synthetic.main.fragment_home.*
 
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(){
 
     private lateinit var homeViewModel: HomeViewModel
 
@@ -49,6 +51,60 @@ class HomeFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        swipeRefreshLayout.setOnRefreshListener(OnRefreshListener {
+            Handler().postDelayed(
+                {
+                    if (swipeRefreshLayout != null) {
+                        swipeRefreshLayout.setRefreshing(true)
+                    }
+                    // TODO Fetching data from server
+                    Log.i("swipe", "onRefresh called from SwipeRefreshLayout")
+
+                    homeViewModel.surveyLiveData.observe(this, Observer {
+                        //textView.text = it
+
+                        it?.let { surveys ->
+                            with(recyclerView) {
+                                //progressBar?.visibility = View.GONE
+
+                                recyclerView?.layoutManager =
+                                    LinearLayoutManager(
+                                        this@HomeFragment.context,
+                                        RecyclerView.VERTICAL,
+                                        false
+                                    )
+
+                                setHasFixedSize(true)
+                                adapter = SurveysAdapter(surveys) { survey ->
+                                    val intent =
+                                        SurveyDetailsActivity.getStartIntent(context, survey)
+
+                                    this@HomeFragment.startActivity(intent)
+
+                                }
+
+                            }
+                        }
+
+                    })
+
+                    homeViewModel.getSurveys()
+                    swipeRefreshLayout.isRefreshing = false
+                },
+                2500
+            )
+        })
+
+        //        mSwipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary,
+        swipeRefreshLayout.setColorSchemeResources(
+            R.color.colorAccent,
+            android.R.color.holo_green_dark,
+            android.R.color.holo_orange_dark,
+            android.R.color.holo_blue_dark
+        )
+
+
 
         if (progressBar != null) {
             Log.i("progress", "passou")
@@ -134,4 +190,53 @@ class HomeFragment : Fragment() {
 
     }
 
+//    override fun onRefresh() {
+//        /**
+//         * Showing Swipe Refresh animation on activity create
+//         * As animation won't start on onCreate, post runnable is used
+//         */
+//        swipeRefreshLayout.postDelayed(Runnable {
+//            if (swipeRefreshLayout != null) {
+//                swipeRefreshLayout.setRefreshing(true)
+//            }
+//            // TODO Fetching data from server
+//            Log.i("swipe", "onRefresh called from SwipeRefreshLayout")
+//
+//            homeViewModel.surveyLiveData.observe(this, Observer {
+//                //textView.text = it
+//
+//                it?.let { surveys ->
+//                    with(recyclerView) {
+//                        //progressBar?.visibility = View.GONE
+//
+//                        recyclerView?.layoutManager =
+//                            LinearLayoutManager(
+//                                this@HomeFragment.context,
+//                                RecyclerView.VERTICAL,
+//                                false
+//                            )
+//
+//                        setHasFixedSize(true)
+//                        adapter = SurveysAdapter(surveys) { survey ->
+//                            val intent =
+//                                SurveyDetailsActivity.getStartIntent(context, survey)
+//
+//                            this@HomeFragment.startActivity(intent)
+//
+//                        }
+//
+//                    }
+//                }
+//
+//            })
+//
+//            homeViewModel.getSurveys()
+//            swipeRefreshLayout.isRefreshing = false
+//
+//        },1000)
+//
+//    }
+
 }
+
+

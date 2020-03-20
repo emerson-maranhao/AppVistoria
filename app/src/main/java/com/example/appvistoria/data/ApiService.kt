@@ -8,8 +8,8 @@ import retrofit2.converter.moshi.MoshiConverterFactory
         private fun initRetrofit(): Retrofit {
 
             return Retrofit.Builder()
-               // .baseUrl("http://10.11.3.205:3333/")
-                .baseUrl("http://10.11.1.76:3000/api/")
+                .baseUrl("http://10.11.1.233:3333/")
+                //.baseUrl("http://10.11.1.76:3000/api/")
                 .addConverterFactory(MoshiConverterFactory.create())
                 .build()
         }
